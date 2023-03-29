@@ -27,7 +27,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>Tableau de bord</h1>
 @stop
 
 @section('content')
@@ -37,3 +37,4 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
+
