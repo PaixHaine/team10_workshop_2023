@@ -1,13 +1,35 @@
+# Ignore les fichiers générés par les systèmes d'exploitation Mac et Windows
+.DS_Store
+Thumbs.db
+
+# Ignore les fichiers générés par les IDE JetBrains
+.idea/
+
+# Ignore les fichiers générés par Visual Studio Code
+.vscode/
+
+# Ignore les fichiers de build de Maven
+target/
+
+# Ignore les fichiers de build de Gradle
+build/
+
+# Ignore les fichiers de dépendances de Node.js
+node_modules/
+
+# Ignore les fichiers de cache de PHP
+vendor/
+
+# Ignore les fichiers de configuration de Laravel
+.env
+.env.*
+
+
 /.phpunit.cache
-/node_modules
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
-/vendor
-.env
-.env.backup
-.env.production
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
