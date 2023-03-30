@@ -26,15 +26,31 @@ Route::get('/', function () {
 
 
 // Route pour la page de listing et gestion des leads
-Route::middleware(['auth'])->group(function () {
-    Route::get('/leads', [LeadController::class, 'index'])->name('leads.index');
-    Route::get('/leads/create', [LeadController::class, 'create'])->name('leads.create');
-    Route::post('/leads', [LeadController::class, 'store'])->name('leads.store');
-    Route::get('/leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
-    Route::get('/leads/{lead}/edit', [LeadController::class, 'edit'])->name('leads.edit');
-    Route::put('/leads/{lead}', [LeadController::class, 'update'])->name('leads.update');
-    Route::delete('/leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
+Route::prefix('leads')->group(function () {
+
+    // Affiche la liste des leads
+    Route::get('/', [LeadController::class, 'index'])->name('leads.index');
+
+    // Affiche le formulaire pour créer un nouveau lead
+    Route::get('/create', [LeadController::class, 'create'])->name('leads.create');
+
+    // Enregistre le nouveau lead
+    Route::post('/', [LeadController::class, 'store'])->name('leads.store');
+
+    // Affiche les détails d'un lead existant
+    Route::get('/{id}', [LeadController::class, 'show'])->name('leads.show');
+
+    // Affiche le formulaire pour modifier un lead existant
+    Route::get('/{id}/edit', [LeadController::class, 'edit'])->name('leads.edit');
+
+
+    // Met à jour un lead existant
+    Route::put('/{id}', [LeadController::class, 'update'])->name('leads.update');
+
+    // Supprime un lead existant
+    Route::delete('/{id}', [LeadController::class, 'destroy'])->name('leads.destroy');
 });
+
 
 // Route pour la page de listing et gestion des prospects
 Route::middleware(['auth'])->group(function () {
