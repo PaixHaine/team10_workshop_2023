@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ProspectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +21,10 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/leads', [LeadController::class]);
+Route::get('/prospects', [ProspectController::class]);
+Route::get('/clients', [ClientController::class]);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
