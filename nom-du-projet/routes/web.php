@@ -24,14 +24,32 @@ Route::get('/', function () {
     }
 });
 
+// Route pour la page de listing et gestion des comptes contacts
+Route::prefix('contacts')->group(function () {
 
+    // Affiche la liste des contacts
+    Route::get('/', [ContactController::class, 'index'])->name('contacts.index');
 
+    // Affiche le formulaire pour créer un nouveau contact
+    Route::get('/create', [ContactController::class, 'create'])->name('contacts.create');
 
+    // Enregistre le nouveau contact
+    Route::post('/', [ContactController::class, 'store'])->name('contacts.store');
 
+    // Affiche les détails d'un contact existant
+    Route::get('/{id}', [ContactController::class, 'show'])->name('contacts.show');
 
+    // Affiche le formulaire pour modifier un contact existant
+    Route::get('/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
 
+    // Met à jour un contact existant
+    Route::put('/{id}', [ContactController::class, 'update'])->name('contacts.update');
 
+    // Supprime un contact existant
+    Route::delete('/{id}', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
+    // Export du CSV
+    Route::get('/contacts/export', [ContactController::class, 'export'])->name('contacts.export');
 
 });
 
