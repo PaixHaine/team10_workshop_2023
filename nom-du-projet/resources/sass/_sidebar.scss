@@ -1,0 +1,32 @@
+@import "color";
+
+.main-sidebar {
+    background-color: $primaryColor;
+}
+
+
+.nav-pills .nav-link, .nav-header, .btn-sidebar  {
+    color: $white;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: $secondaryColor;
+}
+
+.nav-sidebar .nav-item>.nav-link {
+    &:hover {
+        color: $secondaryColor;
+    }
+}
+
+.nav-pills .nav-link.active {
+    &:hover {
+        color: $white;
+    }
+}
+
+.sidebar .brand-link {
+    text-decoration: none;
+    color: $white;
+}
+

@@ -1,0 +1,20 @@
+@import "color";
+
+.createContact {
+    background-color: $green;
+    color: $white;
+
+    &:hover {
+        background-color: darken($green, 20%);
+        color: $white;
+    }
+}
+
+.viewContact {
+    color: $green;
+}
+.btn.export {
+    background-color: $secondaryColor;
+    color: $white;
+}
+

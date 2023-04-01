@@ -1,7 +1,22 @@
-// Body
-$body-bg: #f8fafc;
+@import 'color';
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+.btn {
+    color: $white !important;
+}
+
+.btn.edit {
+    background-color: $secondaryColor;
+}
+
+.btn.delete {
+    background-color: $red;
+}
+
+.btn.retour {
+    background-color: $yellow;
+}

@@ -1,0 +1,17 @@
+@import "color";
+
+.navbar {
+    background-color: $primaryColor;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: $white;
+
+    &:hover{
+        color: $secondaryColor;
+    }
+    &:focus {
+        color: $secondaryColor;
+    }
+}
+
