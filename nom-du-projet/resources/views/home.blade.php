@@ -7,15 +7,7 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-    <ul>
-        <li><a href="/leads">Leads</a></li>
-        <li><a href="/prospects">Prospects</a></li>
-        <li><a href="/clients">Clients</a></li>
-    </ul>
 @stop
-
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
-

@@ -293,54 +293,52 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
+            'text'         => 'Rechercher...',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text'         => 'Rechercher...',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 3,
-            'label_color' => 'success',
+            'text'        => 'Contacts',
+            'icon'        => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Gestion des leads',
-                    'url'  => '/leads',
+                    'text' => 'Liste des contacts',
+                    'url' => '/contacts',
+                    'icon' => 'fas fa-fw fa-list-ul',
                 ],
                 [
-                    'text'    => 'Gestion des prospects',
-                    'url'     => '/prospects',
-                ],
-                [
-                    'text' => 'Gestion des clients',
-                    'url'  => '/clients',
+                    'text' => "Créer un contact",
+                    'url'  => '/contacts/create',
+                    'icon' => 'fas fa-fw fa-plus',
                 ],
             ],
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/show',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Utilisateurs',
+            'icon' => 'fas fa-fw fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Liste des utilisateurs',
+                    'url' => 'admin',
+                    'icon' => 'fas fa-fw fa-list-ul',
+                ],
+                [
+                    'text' => 'Créer un utilisateur',
+                    'url' => 'admin/add',
+                    'icon' => 'fas fa-fw fa-plus',
+                ],
+            ]
         ],
     ],
 
