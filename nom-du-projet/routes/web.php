@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\LeadController;
-use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//Redirection vers login si pas connecté
 Route::get('/', function () {
     if (Auth::check()) {
         return redirect('/home');
@@ -53,12 +54,20 @@ Route::prefix('contacts')->group(function () {
 
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/add', [AdminController::class, 'add'])->name('admin.add');
+    Route::post('/store', [AdminController::class, 'store'])->name('admin.store');
+    Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/{id}/update', [AdminController::class, 'update'])->name('admin.update');
+    Route::get('/show', [AdminController::class, 'show'])->name('admin.show');
+    Route::get('/{id}/show', [AdminController::class, 'show'])->name('admin.show');
+    Route::delete('/{id}/delete', [AdminController::class, 'delete'])->name('admin.delete');
 });
 
 
 
 Auth::routes();
-//Route::get('/home', [HomeController::class,'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
