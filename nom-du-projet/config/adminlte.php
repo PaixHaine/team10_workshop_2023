@@ -302,6 +302,7 @@ return [
             'type' => 'sidebar-menu-search',
             'text'         => 'Rechercher...',
         ],
+        ['header' => 'GESTION'],
         [
             'text'        => 'Contacts',
             'icon'        => 'fas fa-fw fa-users',

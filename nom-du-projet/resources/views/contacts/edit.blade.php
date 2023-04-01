@@ -50,7 +50,8 @@
                                 <option value="{{ \App\Models\Contact::GENRE_3 }}" {{ $contact->genre === \App\Models\Contact::GENRE_3 ? 'selected' : '' }}>Client</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                        <a href="{{ route('contacts.index') }}" class="btn retour"><i class="fas fa-arrow-circle-left"></i>Retour</a>
+                        <button type="submit" class="btn createContact">Mettre à jour</button>
                     </form>
                 </div>
             </div>
