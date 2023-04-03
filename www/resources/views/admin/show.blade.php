@@ -1,10 +1,8 @@
 @extends('adminlte::page')
 
-@section('content_header')
-    <h1>Profil de : {{ auth()->user()->name }}</h1>
-@stop
-
 @section('content')
+    <h1>Profil de : {{ auth()->user()->name }}</h1>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-default">

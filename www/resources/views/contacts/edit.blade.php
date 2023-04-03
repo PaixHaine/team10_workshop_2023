@@ -1,10 +1,7 @@
 @extends('adminlte::page')
-
-@section('content_header')
-    <h1>Modifier un contact</h1>
-@stop
-
 @section('content')
+    <h1>Modifier un contact</h1>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card card-default">
@@ -29,7 +26,7 @@
                             <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $contact->phone) }}">
                         </div>
                         <div class="form-group">
-                            <label for="status">Status</label>
+                            <label for="status">Statut</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="in_progress" {{ $contact->status == 'in_progress' ? 'selected' : '' }}>En cours</option>
                                 <option value="dead" {{ $contact->status == 'dead' ? 'selected' : '' }}>Non intéressé</option>
@@ -51,7 +48,7 @@
                             </select>
                         </div>
                         <a href="{{ route('contacts.index') }}" class="btn retour"><i class="fas fa-arrow-circle-left"></i>Retour</a>
-                        <button type="submit" class="btn createContact">Mettre à jour</button>
+                        <button type="submit" class="btn action"><i class="fas fa-pen-alt mr-2"></i>Mettre à jour</button>
                     </form>
                 </div>
             </div>

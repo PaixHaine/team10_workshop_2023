@@ -2,12 +2,12 @@
 
 
 @section('content')
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-center">
         <h1>Liste des contacts</h1>
         <a href="{{ route('contacts.create') }}" class="btn createContact ml-4"><i class="fas fa-plus-circle mr-1"></i>Créer</a>
     </div>
     <div class="form-group">
-        <label for="nature">Filtrer par contact:</label>
+        <label for="nature" class="h4">Filtrer par contact:</label>
         <select class="form-control" id="nature" name="nature">
             <option value="all" {{ $selectedType == 'all' ? 'selected' : '' }}>Tous</option>
             <option value="lead" {{ $selectedType == 'lead' ? 'selected' : '' }}>Lead</option>
@@ -32,6 +32,7 @@
             <th>Téléphone</th>
             <th>Type</th>
             <th>Nature du client</th>
+            <th>Statut</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -45,6 +46,7 @@
                 <td>{{ $contact->phone }}</td>
                 <td>{{ $contact->type }}</td>
                 <td>{{ $contact->genre }}</td>
+                <td>{{ $contact->status }}</td>
                 <td>
                     <a class="ml-3 btn createContact" href="{{ route('contacts.show', ['id' => $contact->id]) }}"><i class="fas fa-eye mr-1"></i>Voir</a>
                     <a href="{{ route('contacts.edit', ['id' => $contact->id]) }}" class="btn edit"><i class="fas fa-edit mr-1"></i>Modifier</a>
@@ -63,5 +65,13 @@
             Exporter les données
         </a>
     </div>
+    <form action="{{ route('contacts.import') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <label for="csv_file">Fichier CSV</label>
+            <input type="file" class="form-control-file" id="csv_file" name="csv_file" required>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-file-import"></i> Importer</button>
+    </form>
 
 @endsection

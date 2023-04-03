@@ -1,10 +1,7 @@
 @extends('adminlte::page')
-
-@section('content_header')
-    <h1>Editer un utilisateur</h1>
-@stop
-
 @section('content')
+    <h1>Editer un utilisateur</h1>
+
 <form action="{{ route('admin.update', ['id' => auth()->user()->id]) }}" method="POST">
     @csrf
     @method('PUT')
@@ -38,6 +35,6 @@
         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
     </div>
 
-    <button type="submit" class="btn createContact">Mettre à jour</button>
+    <button type="submit" class="btn action"><i class="fas fa-pen mr-2"></i>Mettre à jour</button>
 </form>
 @stop

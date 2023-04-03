@@ -39,7 +39,7 @@
                         <option value="{{\App\Models\Contact::GENRE_3}}">Client</option>
                     </select>
                 </div>
-                <button type="submit" class="btn createContact">Créer</button>
+                <button type="submit" class="btn createContact"><i class="fas fa-plus-circle mr-2"></i>Créer</button>
             </form>
         </div>
     </div>

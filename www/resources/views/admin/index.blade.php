@@ -1,13 +1,10 @@
 @extends('adminlte::page')
 
-@section('content_header')
-    <div class="d-flex align-items-center">
+@section('content')
+    <div class="d-flex align-items-center justify-content-center">
         <h1>Liste des utilisateurs</h1>
         <a href="{{ route('admin.add') }}" class="btn createContact ml-4"><i class="fas fa-plus-circle mr-1"></i>Créer</a>
     </div>
-@stop
-
-@section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card card-default">
