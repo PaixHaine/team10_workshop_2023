@@ -55,4 +55,9 @@ class Contact extends Model
         // Ajoutez d'autres règles ici
     ];
 
+    public function actions()
+    {
+        return $this->hasMany(Action::class);
+    }
+
 }

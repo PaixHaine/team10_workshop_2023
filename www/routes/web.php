@@ -51,6 +51,10 @@ Route::prefix('contacts')->group(function () {
 
     // Export du CSV
     Route::get('/contacts/export', [ContactController::class, 'export'])->name('contacts.export');
+    Route::post('/contacts/{id}/rdv', [ActionController::class, 'rdv'])->name('contacts.rdv');
+    Route::post('/contacts/{id}/mail', [ActionController::class, 'mail'])->name('contacts.mail');
+    Route::post('/contacts/{id}/call', [ActionController::class, 'call'])->name('contacts.call');
+    Route::post('/contacts/{id}/note', [ActionController::class, 'note'])->name('contacts.note');
 
 });
 
