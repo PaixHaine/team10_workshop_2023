@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Todo;
+
 
 class Contact extends Model
 {
@@ -58,6 +60,11 @@ class Contact extends Model
     public function actions()
     {
         return $this->hasMany(Action::class);
+    }
+
+    public function todos()
+    {
+        return $this->hasMany(Todo::class);
     }
 
 }

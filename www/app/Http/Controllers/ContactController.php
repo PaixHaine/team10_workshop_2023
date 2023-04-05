@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Contact;
+use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class ContactController extends Controller
 {
@@ -50,6 +53,13 @@ class ContactController extends Controller
         $contact->genre = $validatedData['genre'];
 
         $contact->save();
+
+        $todo = new Todo();
+        $todo->content = $request->todo;
+        $todo->contact_id = $contact->id;
+        $todo->save();
+
+        $contact->todo_count = $contact->todos->count();
 
         return redirect()->route('contacts.index')->with('success', 'Contact créé avec succès.');
     }
@@ -148,6 +158,112 @@ class ContactController extends Controller
 
         return response()->streamDownload($callback, 'contacts.csv', $headers);
     }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt',
+        ]);
+
+        $path = $request->file('file')->getRealPath();
+        $data = array_map('str_getcsv', file($path));
+        $csvData = array_slice($data, 1);
+
+        $contacts = [];
+
+        foreach ($csvData as $row) {
+            $contact = [
+                'name' => $row[0],
+                'email' => $row[1],
+                'phone' => $row[2],
+                'type' => $row[3],
+                'genre' => $row[4],
+                'status' => $row[5],
+                'is_interested' => $row[6] == 'oui' ? true : false,
+                'is_active' => $row[7] == 'oui' ? true : false,
+            ];
+
+            $validator = Validator::make($contact, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:contacts,email',
+                'phone' => 'nullable|string|max:20',
+                'type' => 'nullable|string|max:255',
+                'genre' => 'nullable|string|max:255',
+                'status' => 'nullable|string|max:255',
+                'is_interested' => 'nullable|boolean',
+                'is_active' => 'nullable|boolean',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $contacts[] = $contact;
+        }
+
+        Contact::insert($contacts);
+
+        return redirect()->route('contacts.index')->with('success', 'Les contacts ont été importés avec succès.');
+    }
+
+    public function storeTodo(Request $request)
+    {
+        $request->validate([
+            'contact_id' => 'required|exists:contacts,id',
+            'content' => 'required',
+        ]);
+
+        $contact = Contact::findOrFail($request->contact_id);
+
+        $todo = new Todo();
+        $todo->content = $request->content;
+
+        $contact->todos()->save($todo);
+
+        return back()->with('success', 'La Todo a été ajoutée avec succès.');
+    }
+
+    public function destroyTodo(Todo $todo)
+    {
+        $todo->delete();
+
+        return back()->with('success', 'La Todo a été supprimée avec succès.');
+    }
+
+    public function markDone(Request $request, $id)
+    {
+        $todo = Todo::findOrFail($id);
+
+        // On vérifie si la tâche a été cochée
+        $wasDone = $todo->done;
+
+        $todo->done = $request->input('isCompleted');
+        $todo->save();
+
+        // Si la tâche était cochée et a été décochée
+        if ($wasDone && !$todo->done) {
+            // On supprime l'action associée au contact
+            $action = Action::where('contact_id', $todo->contact_id)
+                ->where('type', 'todo')
+                ->where('notes', $todo->content)
+                ->first();
+            if ($action) {
+                $action->delete();
+            }
+        } elseif (!$wasDone && $todo->done) {
+            // Si la tâche était décochée et a été cochée
+            // On ajoute une nouvelle action pour le contact
+            $action = new Action();
+            $action->contact_id = $todo->contact_id;
+            $action->type = 'todo';
+            $action->notes = $todo->content;
+            $action->save();
+        }
+
+        return redirect()->back()->with('success', 'La tâche a été marquée comme réalisée.');
+    }
+
+
 
 
 }
