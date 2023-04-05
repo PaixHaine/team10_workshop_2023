@@ -66,4 +66,33 @@ class ActionController extends Controller
         return response()->json(['success' => 'Appel téléphonique enregistré.']);
     }
 
+
+    public function history(Contact $contact)
+    {
+        $actions = $contact->actions()->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('contacts.actions.history', compact('contact', 'actions'));
+    }
+
+    public function showAction($contact_id, $action_id)
+    {
+        $contact = Contact::find($contact_id);
+        $action = Action::find($action_id);
+
+        if (!$contact || !$action || $action->contact_id !== $contact->id) {
+            abort(404);
+        }
+
+        return view('contacts.actions.show', compact('contact', 'action'));
+    }
+
+    public function destroyAction(Contact $contact, Action $action)
+    {
+        abort_unless($contact->id === $action->contact_id, 404);
+
+        $action->delete();
+
+        return redirect()->route('contacts.show', $contact)->with('success', 'L\'action a été supprimée avec succès.');
+    }
+
 }
