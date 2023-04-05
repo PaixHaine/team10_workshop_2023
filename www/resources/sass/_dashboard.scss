@@ -1,0 +1,24 @@
+.gabDashboard {
+
+    .boxTodo {
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    }
+
+    .todoList {
+
+        > li {
+            border-left: none;
+        }
+    }
+
+    .realisee {
+        background-color: $green;
+        color: $white;
+    }
+
+    .nonRealisee {
+        background-color: $yellow;
+        color: $white;
+    }
+
+}

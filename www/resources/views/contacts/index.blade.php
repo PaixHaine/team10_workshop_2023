@@ -53,25 +53,29 @@
                     <form action="{{ route('contacts.destroy', ['id' => $contact->id]) }}" method="POST" style="display: inline-block">
                         @csrf
                         @method('DELETE')
-                        <x-adminlte-button class="btn delete" type="submit" label="Supprimer" icon="fas fa-lg fa-trash" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lead ?')"/>
+                        <button type="submit" class="btn delete mr-2">
+                            <i class="fas fa-trash-alt"></i>
+                            Supprimer
+                        </button>
                     </form>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
-    <div class="mt-3">
-        <a href="{{ route('contacts.export', ['type' => $selectedType]) }}" class="btn export">
-            Exporter les données
-        </a>
-    </div>
-    <form action="{{ route('contacts.import') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="csv_file">Fichier CSV</label>
-            <input type="file" class="form-control-file" id="csv_file" name="csv_file" required>
+    <div class="d-flex align-items-center">
+        <div class="mt-3">
+            <a href="{{ route('contacts.export', ['type' => $selectedType]) }}" class="btn edit">
+                <i class="fas fa-file-export mr-2"></i>Exporter les données
+            </a>
         </div>
-        <button type="submit" class="btn btn-primary"><i class="fas fa-file-import"></i> Importer</button>
-    </form>
+        <form action="{{ route('contacts.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group ml-3">
+                <input type="file" class="form-control-file mb-2" id="csv_file" name="csv_file" required>
+                <button type="submit" class="btn edit"><i class="fas fa-file-import"></i> Importer</button>
+            </div>
+        </form>
+    </div>
 
 @endsection

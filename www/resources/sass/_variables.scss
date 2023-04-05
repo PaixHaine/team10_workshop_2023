@@ -17,14 +17,33 @@ $line-height-base: 1.6;
     background-color: $red;
 }
 
-.btn.retour {
+.btn.retour, .retour {
     background-color: $yellow;
 }
 
-.btn.send {
+.btn.send, .send {
     background-color: $green;
 }
 
 h1 {
+    width: fit-content;
+    margin: auto;
     text-align: center;
+    margin-bottom: 4rem !important;
+    position: relative;
+    z-index: 1;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        height: 20px;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        background-color: $yellow;
+        z-index: -1;
+        border-radius: 20px;
+    }
 }
