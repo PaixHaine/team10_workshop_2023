@@ -39,6 +39,10 @@ class HomeController extends Controller
             $query->where('genre', 'client');
         })->count();
 
+        $appointmentCount = Action::where('type', 'appointment')->count();
+        $emailCount = Action::where('type', 'email')->count();
+        $todoCount = Action::where('type', 'todo')->count();
+
         $todos = Todo::all();
         $contacts = Contact::all();
 
@@ -56,7 +60,13 @@ class HomeController extends Controller
             'data' => [$leadsCount, $prospectsCount, $clientsCount],
         ];
 
-        return view('home', compact('leadActions', 'prospectActions', 'clientActions', 'todos', 'chartData','chartActionsData', 'contacts'));
+        $chartTypeActionData = [
+            'labels' => ['Rendez-vous', 'Mail(s)', 'Todo'],
+            'data' => [$appointmentCount, $emailCount, $todoCount],
+        ];
+
+
+        return view('home', compact('leadActions', 'prospectActions', 'clientActions', 'todos', 'chartData','chartActionsData','chartTypeActionData', 'contacts'));
     }
 
 }

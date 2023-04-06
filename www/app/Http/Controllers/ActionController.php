@@ -24,7 +24,7 @@ class ActionController extends Controller
         $action->notes = $validatedData['rdv_notes'];
         $action->save();
 
-        return redirect()->route('contacts.show')->with('success', 'E-mail envoyé et action enregistrée.');
+        return redirect()->route('contacts.show', ['id' => $id])->with('success', 'E-mail envoyé et action enregistrée.');
     }
 
     public function mail(Request $request, $id)

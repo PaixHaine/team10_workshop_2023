@@ -35,6 +35,6 @@
             <input type="password" class="form-control" id="new_password_confirmation" name="password_confirmation" required>
         </div>
 
-        <button type="submit" class="btn createContact"><i class="fas fa-plus-circle mr-2"></i>Ajouter</button>
+        <button type="submit" class="btn send"><i class="fas fa-plus-circle mr-2"></i>Ajouter</button>
     </form>
 @stop

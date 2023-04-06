@@ -6,18 +6,20 @@
     <div class="gabDashboard">
         <h1>Tableau de bord</h1>
         <div class="widgets">
-            <div class="row gap-5">
+            <div class="row gap-4 justify-content-center">
                 <script>
                     window.chartData = @json($chartData);
                     window.chartActionsData = @json($chartActionsData);
+                    window.chartTypeActionData = @json($chartTypeActionData);
+
                 </script>
-                <div class="cam col-4 rounded-5 bg-white p-3">
+                <div class="cam col-5 rounded-5 bg-white p-3">
                     <h3 class="text-center">Nombre de contact(s)</h3>
                     <canvas id="contacts-chart" width="100" height="100"></canvas>
                 </div>
-                <div class="cam col-4 rounded-5 bg-white p-3">
+                <div class="cam col-5 rounded-5 bg-white p-3">
                     <h3 class="text-center">Actions réalisée(s)</h3>
-                    <canvas id="actions-chart" width="50" height="100"></canvas>
+                    <canvas id="actions-chart" width="100" height="100"></canvas>
                 </div>
             </div>
             <div class="row mt-4">
