@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +53,6 @@ Route::prefix('contacts')->group(function () {
 
     // Export du CSV
     Route::get('/contacts/export', [ContactController::class, 'export'])->name('contacts.export');
-    Route::post('/contacts/import', [ContactController::class, 'import'])->name('contacts.import');
 
 
     Route::post('/contacts/{id}/rdv', [ActionController::class, 'rdv'])->name('contacts.rdv');
@@ -86,5 +86,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'dashboard'])->name('home');
+
 

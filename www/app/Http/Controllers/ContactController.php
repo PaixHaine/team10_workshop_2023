@@ -54,12 +54,12 @@ class ContactController extends Controller
 
         $contact->save();
 
-        $todo = new Todo();
-        $todo->content = $request->todo;
-        $todo->contact_id = $contact->id;
-        $todo->save();
-
-        $contact->todo_count = $contact->todos->count();
+//        $todo = new Todo();
+//        $todo->content = $request->todo;
+//        $todo->contact_id = $contact->id;
+//        $todo->save();
+//
+//        $contact->todo_count = $contact->todos->count();
 
         return redirect()->route('contacts.index')->with('success', 'Contact créé avec succès.');
     }
@@ -159,53 +159,6 @@ class ContactController extends Controller
         return response()->streamDownload($callback, 'contacts.csv', $headers);
     }
 
-    public function import(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:csv,txt',
-        ]);
-
-        $path = $request->file('file')->getRealPath();
-        $data = array_map('str_getcsv', file($path));
-        $csvData = array_slice($data, 1);
-
-        $contacts = [];
-
-        foreach ($csvData as $row) {
-            $contact = [
-                'name' => $row[0],
-                'email' => $row[1],
-                'phone' => $row[2],
-                'type' => $row[3],
-                'genre' => $row[4],
-                'status' => $row[5],
-                'is_interested' => $row[6] == 'oui' ? true : false,
-                'is_active' => $row[7] == 'oui' ? true : false,
-            ];
-
-            $validator = Validator::make($contact, [
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|unique:contacts,email',
-                'phone' => 'nullable|string|max:20',
-                'type' => 'nullable|string|max:255',
-                'genre' => 'nullable|string|max:255',
-                'status' => 'nullable|string|max:255',
-                'is_interested' => 'nullable|boolean',
-                'is_active' => 'nullable|boolean',
-            ]);
-
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
-
-            $contacts[] = $contact;
-        }
-
-        Contact::insert($contacts);
-
-        return redirect()->route('contacts.index')->with('success', 'Les contacts ont été importés avec succès.');
-    }
-
     public function storeTodo(Request $request)
     {
         $request->validate([
@@ -217,6 +170,11 @@ class ContactController extends Controller
 
         $todo = new Todo();
         $todo->content = $request->content;
+
+        $todo->contact_id = $contact->id;
+        $todo->save();
+
+        $contact->todo_count = $contact->todos->count();
 
         $contact->todos()->save($todo);
 

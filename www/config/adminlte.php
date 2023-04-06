@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>DiggoryCRM</b>',
+    'logo' => '<b>Connectify</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'vendor/adminlte/dist/img/AdminLTELogoDark.png',
+            'alt' => 'Connectify',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -308,9 +308,24 @@ return [
             'icon'        => 'fas fa-fw fa-users',
             'submenu' => [
                 [
-                    'text' => 'Liste des contacts',
+                    'text' => 'Tous des contacts',
                     'url' => '/contacts',
                     'icon' => 'fas fa-fw fa-list-ul',
+                ],
+                [
+                    'text' => 'Lead',
+                    'url' => '/contacts?nature=lead',
+                    'icon' => 'far fa-user',
+                ],
+                [
+                    'text' => 'Prospect',
+                    'url' => '/contacts?nature=prospect',
+                    'icon' => 'far fa-user',
+                ],
+                [
+                    'text' => 'Client',
+                    'url' => '/contacts?nature=client',
+                    'icon' => 'far fa-user',
                 ],
                 [
                     'text' => "Créer un contact",

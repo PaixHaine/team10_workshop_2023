@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Contact;
 use App\Models\Todo;
 use Illuminate\Http\Request;
@@ -23,12 +24,39 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function dashboard()
     {
-        $contacts = Contact::all();
+        $leadActions = Action::whereHas('contact', function ($query) {
+            $query->where('genre', 'lead');
+        })->count();
+
+        $prospectActions = Action::whereHas('contact', function ($query) {
+            $query->where('genre', 'prospect');
+        })->count();
+
+        $clientActions = Action::whereHas('contact', function ($query) {
+            $query->where('genre', 'client');
+        })->count();
+
         $todos = Todo::all();
+        $contacts = Contact::all();
 
+        $leadsCount = count($contacts->where('genre', 'lead'));
+        $prospectsCount = count($contacts->where('genre', 'prospect'));
+        $clientsCount = count($contacts->where('genre', 'client'));
 
-        return view('home', compact('contacts', 'todos'));
+        $chartActionsData = [
+            'labels' => ['Lead(s)', 'Prospect(s)', 'Client(s)'],
+            'data' => [$leadActions, $prospectActions, $clientActions],
+        ];
+
+        $chartData = [
+            'labels' => ['Lead(s)', 'Prospect(s)', 'Client(s)'],
+            'data' => [$leadsCount, $prospectsCount, $clientsCount],
+        ];
+
+        return view('home', compact('leadActions', 'prospectActions', 'clientActions', 'todos', 'chartData','chartActionsData', 'contacts'));
     }
+
 }

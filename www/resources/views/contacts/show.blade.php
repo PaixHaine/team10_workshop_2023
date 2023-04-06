@@ -34,12 +34,11 @@
                 <script>
                     function redirectToUrl(selectElement) {
                         var selectedValue = selectElement.options[selectElement.selectedIndex].value;
-                        if (selectedValue) {
+                        if (selectedValue && selectedValue !== 'rdv' && selectedValue !== 'mail') {
                             window.location.replace(selectedValue);
                         }
                     }
                 </script>
-
                 <!-- Bloc de prise de RDV -->
                 <div id="rdv-block" class="container" style="display: none;">
                     <h4 class="my-4">Prendre un rendez-vous</h4>

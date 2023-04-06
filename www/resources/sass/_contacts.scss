@@ -1,20 +1,29 @@
 @import "color";
 
-.createContact {
-    background-color: $green;
-    color: $white;
-
-    &:hover {
-        background-color: darken($green, 20%);
+.gabContact {
+    .createContact {
+        background-color: $green;
         color: $white;
+        width: 10%;
+
+        &:hover {
+            background-color: darken($green, 20%);
+            color: $white;
+        }
     }
 }
-
 .viewContact {
     color: $green;
 }
+
 .btn.export {
     background-color: $secondaryColor;
     color: $white;
+}
+
+.titreIndexContact {
+    h1 {
+        margin-bottom: 2rem !important;
+    }
 }
 

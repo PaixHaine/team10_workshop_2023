@@ -24,7 +24,7 @@ class ActionController extends Controller
         $action->notes = $validatedData['rdv_notes'];
         $action->save();
 
-        return back()->with('success', 'Le rendez-vous a été ajouté avec succès.');
+        return redirect()->route('contacts.show')->with('success', 'E-mail envoyé et action enregistrée.');
     }
 
     public function mail(Request $request, $id)

@@ -1,3 +1,7 @@
 import './bootstrap';
 
-import './save_call';
+import './diagramsContacts';
+
+import './diagramsActions'
+
+

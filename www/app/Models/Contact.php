@@ -31,7 +31,7 @@ class Contact extends Model
     protected $fillable = ['name', 'firstName', 'email', 'phone', 'status', 'type', 'is_interested', 'is_active', 'genre'];
 
     /**
-     * Règles de validation pour la création d'un lead.
+     * Règles de validation pour la création d'un contact.
      */
     public static $createRules = [
         'name' => 'required|string|max:255',
@@ -44,7 +44,7 @@ class Contact extends Model
     ];
 
     /**
-     * Règles de validation pour la modification d'un lead.
+     * Règles de validation pour la modification d'un contact.
      */
     public static $updateRules = [
         'name' => 'required|string|max:255',
