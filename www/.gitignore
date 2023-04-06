@@ -20,10 +20,6 @@ node_modules/
 # Ignore les fichiers de cache de PHP
 vendor/
 
-# Ignore les fichiers de configuration de Laravel
-.env
-.env.*
-
 
 /.phpunit.cache
 /public/build
