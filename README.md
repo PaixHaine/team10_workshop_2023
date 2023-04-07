@@ -10,7 +10,7 @@
 Connectify est une solution CRM. Un outil de gestion de contacts et d'actions destiné aux professionnels.
 Elle permet de gérer des contacts, comptes utilisateurs, de planifier des actions et de gérer leurs informations relatives.
     <br />
-    <a href="https://github.com/"><strong>Documentation détaillée »</strong></a>
+    <a href="https://github.com/PaixHaine/team10_workshop_2023/blob/main/docs/Documentation_utilisateur_Connectify.md"><strong>Documentation détaillée »</strong></a>
     <br />
     <br />
     <a href="https://paixhaine.github.io/team10_workshop_2023/">Présentation de la solution</a>
