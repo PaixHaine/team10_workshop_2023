@@ -78,9 +78,12 @@ Nous recommandons d'utiliser [Laragon](https://laragon.org/), [Xampp](https://ww
 
 Vous pouvez aussi l'importer en utilisant une interface graphique comme [phpMyAdmin](https://www.phpmyadmin.net/) si vous utilisez un serveur local comme Xampp.
 
-6. Exécuter le compilateur de développement :
+6. Exécuter le compilateur de CSS et JS
 
+    ```npm run build```
+    et ensuite
     ```npm run dev```
+
 7. Exécuter le seveur de développement :
 
     ```php artisan serve```
