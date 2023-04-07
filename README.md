@@ -90,6 +90,10 @@ Vous pouvez aussi l'importer en utilisant une interface graphique comme [phpMyAd
     http://localhost/
 N'oubliez pas d'ajouter un port spéficique (localhost:8000) si vous utilisez un environnement local et que vous avez spéficifié un port particulier dans leur ocnfiguration.
 
+Les identifiants pour se connecter sont les suivants :
+
+    email : admin@connectify.com
+    mot de passe : Connectify2023!
 ## Auteurs
 
 - **[Pierre-Nicolas ZINSOU](https://github.com/PaixHaine)**
