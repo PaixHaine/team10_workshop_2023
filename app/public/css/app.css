@@ -10818,3 +10818,80 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.navbar {
+  background-color: #073B4C;
+  color: red;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #118AB2;
+}
+.navbar-light .navbar-nav .nav-link:focus {
+  color: #118AB2;
+}
+
+.main-sidebar {
+  background-color: #073B4C;
+}
+
+.nav-pills .nav-link, .nav-header, .btn-sidebar {
+  color: #ffffff;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #118AB2;
+}
+
+.nav-sidebar .nav-item > .nav-link:hover {
+  color: #118AB2;
+}
+
+.nav-pills .nav-link.active:hover {
+  color: #ffffff;
+}
+
+.sidebar .brand-link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.gabContact .createContact {
+  background-color: #06D6A0;
+  color: #ffffff;
+  width: 10%;
+}
+.gabContact .createContact:hover {
+  background-color: #037356;
+  color: #ffffff;
+}
+
+.viewContact {
+  color: #06D6A0;
+}
+
+.btn.export {
+  background-color: #118AB2;
+  color: #ffffff;
+}
+
+.titreIndexContact h1, .titreIndexContact .h1 {
+  margin-bottom: 2rem !important;
+}
+
+.gabDashboard .boxTodo {
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.gabDashboard .todoList > li {
+  border-left: none;
+}
+.gabDashboard .realisee {
+  background-color: #06D6A0;
+  color: #ffffff;
+}
+.gabDashboard .nonRealisee {
+  background-color: #FFD166;
+  color: #ffffff;
+}
