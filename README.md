@@ -62,32 +62,33 @@ Nous recommandons d'utiliser [Laragon](https://laragon.org/), [Xampp](https://ww
     
 1.1. Si vous utilisez Laragon, placez le dossier dans le répertoire www (faire de même avec les dossiers correspondants dans les autres serveurs de développement).
 
-2. Installez Laravel :
+2. Se rendre dans le dossier "app" :
+
+    ```cd app```
+3. Installez Laravel :
 
     ```composer global require laravel/installer```
 
-3. Installez les dépendances :
+4. Installez les dépendances :
 
     ```composer install```
-4. Installez les paquets NPM :
+5. Installez les paquets NPM :
 
     ```npm install```
-5. Importez la base de données dans MySQL via le fichier database.sql.gz :
+6. Importez la base de données dans MySQL via le fichier database.sql.gz :
 
     ```mysql -u root -p < database.sql.gz```
 
 Vous pouvez aussi l'importer en utilisant une interface graphique comme [phpMyAdmin](https://www.phpmyadmin.net/) si vous utilisez un serveur local comme Xampp.
 
-6. Exécuter le compilateur de CSS et JS
-
-    ```npm run build```
-    et ensuite
+7. Exécuter le compilateur de CSS et JS
+ 
     ```npm run dev```
 
-7. Exécuter le seveur de développement :
+8. Exécuter le seveur de développement :
 
     ```php artisan serve```
-8. Vous pouvez maintenant accéder à l'application via l'URL suivante :
+9. Vous pouvez maintenant accéder à l'application via l'URL suivante :
 
     
     http://localhost/
