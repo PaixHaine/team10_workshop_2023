@@ -1,9 +1,9 @@
 <p align="center"><a href="" target="_blank"><img src="https://nkinformatique.com/src/assets/img/logo-NK-informatique-bc.svg" width="200" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
 
 <h1 align="center">Connectify</h1>
   <p align="center">
@@ -74,7 +74,7 @@ Nous recommandons d'utiliser [Laragon](https://laragon.org/), [Xampp](https://ww
     ```npm install```
 5. Importez la base de données dans MySQL via le fichier database.sql.gz :
 
-    ```mysql -u root -p < database.sql```
+    ```mysql -u root -p < database.sql.gz```
 
 Vous pouvez aussi l'importer en utilisant une interface graphique comme [phpMyAdmin](https://www.phpmyadmin.net/) si vous utilisez un serveur local comme Xampp.
 
