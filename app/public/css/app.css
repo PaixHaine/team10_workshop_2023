@@ -20,6 +20,11 @@
   background-color: #06D6A0;
 }
 
+.btn.greenAction {
+  background-color: #06D6A0;
+  color: #ffffff;
+}
+
 h1, .h1 {
   width: -moz-fit-content;
   width: fit-content;

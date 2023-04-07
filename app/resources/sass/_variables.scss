@@ -1,3 +1,4 @@
+@import 'color';
 // Body
 $body-bg: #f8fafc;
 
@@ -6,7 +7,6 @@ $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
-@import 'color';
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -31,6 +31,11 @@ $line-height-base: 1.6;
 
 .btn.send, .send {
     background-color: $green;
+}
+
+.btn.greenAction {
+    background-color: $green;
+    color: $white;
 }
 
 h1 {
